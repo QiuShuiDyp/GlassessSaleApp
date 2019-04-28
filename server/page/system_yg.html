@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>创城实地考察云平台</title>
+		<link rel="stylesheet" type="text/css" href="css/common.css"/>
+		<script src="js/jquery-1.11.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$(".login_out li:last").css("padding","0px").css("border","none");
+				
+				/*导航效果*/				
+				$('.inactive').click(function(){
+					if($(this).siblings('ul').css('display')=='none'){
+						$(this).parent('li').siblings('li').removeClass('inactives');
+						$(this).addClass('inactives');
+						$(this).siblings('ul').slideDown(100).children('li');
+						if($(this).parents('li').siblings('li').children('ul').css('display')=='block'){
+							$(this).parents('li').siblings('li').children('ul').parent('li').children('a').removeClass('inactives');
+							$(this).parents('li').siblings('li').children('ul').slideUp(100);		
+						}
+					}else{
+						//控制自身变成+号
+						$(this).removeClass('inactives');
+						//控制自身菜单下子菜单隐藏
+						$(this).siblings('ul').slideUp(100);
+						//控制自身子菜单变成+号
+						$(this).siblings('ul').children('li').children('ul').parent('li').children('a').addClass('inactives');
+						//控制自身菜单下子菜单隐藏
+						$(this).siblings('ul').children('li').children('ul').slideUp(100);		
+						//控制同级菜单只保持一个是展开的（-号显示）
+						$(this).siblings('ul').children('li').children('a').removeClass('inactives');
+					};	
+				});					
+				$(".list>ul>li>ul>li a").each(function(index, element) {
+					$(this).click(function() {
+						$(".list>ul>li>ul>li a").each(function(index, element) {
+							$(this).removeClass("submenu_crt");
+						});
+						/*alert($(".list>ul>li").length);*/
+						$(".list>ul>li").each(function(index,element){
+							/*alert(index);*/
+							$(".list>ul>li:eq("+index+")").removeClass("submenu_crt");
+						});
+						$(this).addClass("submenu_crt");
+					});
+				});
+				$(".list>ul>li a").each(function(index,element){
+	              $(this).click(function(){
+	                $("ul",this).css("display","block");
+	                $(".list>ul>li a").removeClass("submenu_crt");
+	                $(this).addClass("submenu_crt");
+	              });
+	           });
+	           
+	           /*表格隔行变色*/   
+				$(".stripe tr").mouseover(function(){    
+				//如果鼠标移到class为stripe的表格的tr上时，执行函数    
+				$(this).addClass("over");}).mouseout(function(){    
+				//给这行添加class值为over，并且当鼠标一出该行时执行函数    
+				$(this).removeClass("over");}) //移除该行的class    
+				$(".stripe tr:even").addClass("alt");  
+				
+				/*选中删除*/				
+				var sta=$(".check_b");
+				var str=$(".check");
+				str.hide();  // 默认隐藏状态				
+				sta.click(function(){
+					$(this).hide();	
+					$(this).siblings(str).show();// 改变显隐状态
+				})				
+				str.click(function(){
+					$(this).hide();
+					$(this).siblings(sta).show();	
+				});
+				
+			});
+		</script>
+	</head>
+	<body>
+		<div id="top">
+			<div class="top">
+				<div class="logo">
+					<a href="#"><img src="img/logo.png"/></a>
+				</div>
+				<ul class="login_out">
+					<li><a href="#"><img src="img/out_ico1.png"/>修改密码</a></li>
+					<li><a href="#"><img src="img/out_ico2.png"/>退出登录</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="mian">
+			<div class="main">
+				<div class="left">
+					<div class="list">
+						<ul class="yiji">							
+							<li><a class="inactive"><img src="img/list_ico1.png"/>系统管理</a>
+								<ul style="display: none">
+									<li><a href="#">角色管理</a></li> 
+									<li><a href="#">客户管理</a></li> 
+									<li><a href="#">员工管理</a></li> 
+									<li><a href="#">测评员管理</a></li> 
+								</ul>
+							</li>
+							<li><a href="#"><img src="img/list_ico2.png"/>责任单位管理</a></li>
+							<li><a href="#"><img src="img/list_ico3.png"/>标准管理</a></li>
+							<li><a href="#"><img src="img/list_ico4.png"/>主体管理</a></li>
+							<li><a href="#"><img src="img/list_ico5.png"/>城市管理</a></li>
+							<li><a href="#"><img src="img/list_ico6.png"/>任务管理</a></li>
+							<li><a class="inactive"><img src="img/list_ico7.png"/>数据管理</a>
+								<ul style="display: none">
+									<li><a href="#">结果管理</a></li> 
+									<li><a href="#">表格管理</a></li> 
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="right">
+					<div class="right_title">
+						<img src="img/title_1.png"/>
+						员工管理
+					</div>
+					<div class="right_top">
+						<div class="search">
+							<input type="text" class="text" name="" id="" value="搜索" onfocus="if (value =='搜索'){value =''}" onblur="if (value ==''){value='搜索'}" />
+							<input type="button" class="button" name="" id="" value="" />
+						</div>
+						<ul class="right_top_button">
+							<li><a href="#"><img src="img/del.png"/></a></li>
+							<li><a href="#"><img src="img/add.png"/></a></li>
+						</ul>
+					</div>
+					<table width="915" border="0" class="stripe" cellpadding="0" cellspacing="0"> 
+						<tr> 
+							<th width="180">添加时间</th> 
+							<th width="130">姓名</th> 
+							<th width="200">联系方式</th> 
+							<th width="170">角色</th> 
+							<th width="240">操作</th> 
+						</tr>    
+						<tr> 
+							<td width="180">
+								<div class="check_b"></div>
+								<div class="check"></div>
+								2016-05-24
+							</td> 
+							<td width="130">测评员</td> 
+							<td width="200">156878687868</td> 
+							<td width="170">测评员</td> 
+							<td width="240">
+								<div class="edit1">
+									<a href="#"></a>
+								</div>
+								<div class="edit2">
+									<a href="#"></a>
+								</div>
+							</td> 
+						</tr> 
+						<tr> 
+							<td width="180">
+								<div class="check_b"></div>
+								<div class="check"></div>
+								2016-05-24
+							</td> 
+							<td width="130">测评员</td> 
+							<td width="200">156878687868</td> 
+							<td width="170">测评员</td> 
+							<td width="240">
+								<div class="edit1">
+									<a href="#"></a>
+								</div>
+								<div class="edit2">
+									<a href="#"></a>
+								</div>
+							</td> 
+						</tr> 
+						<tr> 
+							<td width="180">
+								<div class="check_b"></div>
+								<div class="check"></div>
+								2016-05-24
+							</td> 
+							<td width="130">测评员</td> 
+							<td width="200">156878687868</td> 
+							<td width="170">测评员</td> 
+							<td width="240">
+								<div class="edit1">
+									<a href="#"></a>
+								</div>
+								<div class="edit2">
+									<a href="#"></a>
+								</div>
+							</td> 
+						</tr> 
+						<tr> 
+							<td width="180">
+								<div class="check_b"></div>
+								<div class="check"></div>
+								2016-05-24
+							</td> 
+							<td width="130">测评员</td> 
+							<td width="200">156878687868</td> 
+							<td width="170">测评员</td> 
+							<td width="240">
+								<div class="edit1">
+									<a href="#"></a>
+								</div>
+								<div class="edit2">
+									<a href="#"></a>
+								</div>
+							</td> 
+						</tr> 
+						<tr> 
+							<td width="180">
+								<div class="check_b"></div>
+								<div class="check"></div>
+								2016-05-24
+							</td> 
+							<td width="130">测评员</td> 
+							<td width="200">156878687868</td> 
+							<td width="170">测评员</td> 
+							<td width="240">
+								<div class="edit1">
+									<a href="#"></a>
+								</div>
+								<div class="edit2">
+									<a href="#"></a>
+								</div>
+							</td> 
+						</tr> 
+						<tr> 
+							<td width="180">
+								<div class="check_b"></div>
+								<div class="check"></div>
+								2016-05-24
+							</td> 
+							<td width="130">测评员</td> 
+							<td width="200">156878687868</td> 
+							<td width="170">测评员</td> 
+							<td width="240">
+								<div class="edit1">
+									<a href="#"></a>
+								</div>
+								<div class="edit2">
+									<a href="#"></a>
+								</div>
+							</td> 
+						</tr> 
+						<tr> 
+							<td width="180">
+								<div class="check_b"></div>
+								<div class="check"></div>
+								2016-05-24
+							</td> 
+							<td width="130">测评员</td> 
+							<td width="200">156878687868</td> 
+							<td width="170">测评员</td> 
+							<td width="240">
+								<div class="edit1">
+									<a href="#"></a>
+								</div>
+								<div class="edit2">
+									<a href="#"></a>
+								</div>
+							</td> 
+						</tr> 
+						<tr> 
+							<td width="180">
+								<div class="check_b"></div>
+								<div class="check"></div>
+								2016-05-24
+							</td> 
+							<td width="130">测评员</td> 
+							<td width="200">156878687868</td> 
+							<td width="170">测评员</td> 
+							<td width="240">
+								<div class="edit1">
+									<a href="#"></a>
+								</div>
+								<div class="edit2">
+									<a href="#"></a>
+								</div>
+							</td> 
+						</tr> 
+					</table> 
+				</div>				
+			</div>
+		</div>		
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>创城实地考察云平台</title>
+		<link rel="stylesheet" type="text/css" href="css/login_style.css"/>
+		<script type="text/javascript">			
+			// 加入收藏 兼容360和IE6 
+			function shoucang(sTitle, sURL) {
+				try {
+					window.external.addFavorite(sURL, sTitle);
+				} catch (e) {
+					try {
+						window.sidebar.addPanel(sTitle, sURL, "");
+					} catch (e) {
+						alert("加入收藏失败，请使用Ctrl+D进行添加");
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="mian">
+			<div class="main">
+				<div class="login">
+					<span>账号 <input type="text" class="text" value="" /></span>
+					<span>密码 <input type="text" class="text" value="" /></span>
+					<input type="button" class="button" value="" />
+				</div>
+				<div class="bottom">
+					Copyright©15797768113
+				</div>
+			</div>
+		</div>
+		<div id="foot">
+			<div class="foot">
+				<ul>
+					<li><a href="#" target="_blank">联系我们</a></li>
+					<li><a href="#" target="_blank">关于我们</a></li>
+					<li><a href="#" target="_blank">意见反馈</a></li>
+					<li style="margin: 0px;padding: 0px;border: none;"><a href="javascript:void(0)" onclick="shoucang(this,window.location)">加入收藏</a></li>	
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>

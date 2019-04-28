@@ -1,0 +1,56 @@
+html,body{
+    margin: 0;
+    padding: 0;
+}
+.header{
+    width:100%;
+    height: 80px;
+    background-color:#008cc7; 
+}
+.logo{
+    height:50px;
+    width: 50px;
+    margin: 15px;
+    float: left;
+}
+.title{
+    line-height: 80px;
+    margin-left: 20px;
+    font-size: 30px;
+    font-family: '微软雅黑';
+    color: #fff;
+    float: left;
+}
+.user{
+    line-height: 80px;
+    float: right;
+    font-size: 20px;
+    font-family: '微软雅黑';
+    margin-right: 10px;
+    color: #fff;
+}
+.loginOut{
+    line-height: 80px;
+    margin-right: 10px;
+    float: right;
+    /* text-decoration: none; */
+    color: #fff;
+}
+.main{
+    height: 577px;
+    width: 1366px;
+    background-color: yellow;
+    /* position: relative; */
+}
+.navigation{
+    width: 15%;
+    height: 100%;
+    background-color: #4f5f6f;
+    float: left;
+}
+.content{
+    width:85%;
+    height:100%;
+    background-color: #fff;
+    float: left;
+}
